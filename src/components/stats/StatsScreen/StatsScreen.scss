@@ -1,0 +1,10 @@
+#mainPanel {
+    display: flex;
+    flex-grow: 1;
+    overflow: auto;
+
+    .rk-message-box,
+    .rk-error-box {
+        margin-top: 150px;
+    }
+}
