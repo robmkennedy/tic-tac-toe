@@ -1,3 +1,4 @@
+import GameBoard from '../GameBoard/GameBoard';
 import './BoardPanel.scss';
 
 /**
@@ -9,7 +10,7 @@ const BoardPanel = () => {
 
     return (
         <div className='rk-board-panel'>
-            BoardPanel
+            <GameBoard />
         </div>
     );
 }

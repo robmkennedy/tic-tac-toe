@@ -2,6 +2,7 @@ import BoardPanel from '../BoardPanel/BoardPanel';
 import TimePanel from '../TimePanel/TimePanel';
 import PlayerTitle from '../PlayerTitle/PlayerTitle';
 import './GameScreen.scss';
+import { Player } from 'utils/types';
 
 
 /**
@@ -19,11 +20,11 @@ const GameScreen = () => {
                         <BoardPanel />
                     </div>
                     <div className='col-6 col-lg-3 order-lg-0'>
-                        <PlayerTitle title={'player 1'} isTurn={true} winCount={4} colorClass='rk-color-1' />
+                        <PlayerTitle title={'player O'} player={Player.O} colorClass='rk-color-1' />
                     </div>
 
                     <div className='col-6  col-lg-3 order-lg-2'>
-                        <PlayerTitle title={'player 2'} isTurn={true} winCount={4} colorClass='rk-color-1' />
+                        <PlayerTitle title={'player X'} player={Player.X} colorClass='rk-color-1' />
                     </div>
                 </div>
                 <TimePanel />

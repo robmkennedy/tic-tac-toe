@@ -1,4 +1,27 @@
 /**
+ * A type to represent the strings used for player 1 and player 2
+ */
+export enum Player {
+    'O' = 'O',
+    'X' = 'X'
+}
+
+/**
+ * An enum to represent the type of board used
+ */
+export enum Board {
+    Board9 = 9,
+    Board36 = 36,
+    Board81 = 81
+}
+
+export type PlayerState = {
+    currentPlayer: Player
+};
+
+
+
+/**
  * A type to represent the details for a person.
  */
 export type Person = {
@@ -38,6 +61,14 @@ export type Experience = {
  * person selected from the list.
  */
 export type AppState = {
-    searchString: string,
-    selectedPerson?: Person
+    boardType: Board;
+    boardStatus: {
+        [key in Board]: Player[];
+    };
+    board9Status: string[];
+    board36Status: string[];
+    board81Status: string[];
+    isGameStarted: boolean;
+    totalGameTime: number;
+    currentGameTime: number;
 };

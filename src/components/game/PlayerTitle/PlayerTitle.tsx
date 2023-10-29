@@ -1,9 +1,10 @@
+import { useCurrentPlayerSelector } from 'hooks/selectorHooks';
 import './PlayerTitle.scss';
+import { Player } from 'utils/types';
 
 type PlayerTitleProps = {
     title: string,
-    isTurn: boolean
-    winCount: number,
+    player: Player,
     colorClass: string,
 }
 
@@ -12,12 +13,19 @@ type PlayerTitleProps = {
  * and the main panel taking up the rest of the body.
  * It is wrapped in a Provider used by react-redux for state handling.
  */
-const PlayerTitle = ({title, isTurn, winCount, colorClass}: PlayerTitleProps) => {
+const PlayerTitle = ({title, player, colorClass}: PlayerTitleProps) => {
+
+    const currentPlayer = useCurrentPlayerSelector();
+
+    let myTurn = null;
+    if (player === currentPlayer) {
+        myTurn = 'MY TURN';
+    }
 
     return (
         <div className='rk-player-title'>
             <div>{title}</div>
-            <div>{winCount}</div>
+            <div>{myTurn}</div>
         </div>
     );
 }
