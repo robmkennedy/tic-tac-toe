@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AppState, Player, PlayerState } from 'utils/types';
+import { Player, PlayerState } from 'utils/types';
 
 const initialPlayerState: PlayerState = {
     currentPlayer: Player.O

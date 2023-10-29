@@ -1,3 +1,6 @@
+import HistoryPanel from '../HistoryPanel/HistoryPanel';
+import PercentagePanel from '../PercentagePanel/PercentagePanel';
+import TotalPanel from '../TotalPanel/TotalPanel';
 import './StatsScreen.scss';
 
 /**
@@ -9,9 +12,19 @@ const StatsScreen = () => {
 
 
     return (
-        <main className='rk-stats-screen'>
-            stats panel
-        </main>
+        <section className='rk-stats-screen'>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-12 col-lg-6'>
+                        <PercentagePanel/>
+                    </div>
+                    <div className='col-12 col-lg-6'>
+                        <HistoryPanel />
+                    </div>
+                </div>
+                <TotalPanel />
+            </div>
+        </section>
     );
 }
 

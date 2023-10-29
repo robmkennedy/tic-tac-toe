@@ -54,21 +54,25 @@ export type Experience = {
     title: string
 };
 
+export type Win = {
+    player: Player,
+    winSquares: number[]
+}
+
 /**
  * Represents the state stored in redux for general parts of the app.
  * For a simple app like this, a single state slice can be used for both the selected
  * person and the search string. The selected person is optional as there may not be a 
  * person selected from the list.
  */
-export type AppState = {
+export type GameState = {
+    isRunning: boolean;
+    totalTime: number;
+    currentTime: number;
+    winHistory: Win[];
+    currentWin: Win | undefined;
     boardType: Board;
     boardStatus: {
         [key in Board]: Player[];
     };
-    board9Status: string[];
-    board36Status: string[];
-    board81Status: string[];
-    isGameStarted: boolean;
-    totalGameTime: number;
-    currentGameTime: number;
 };

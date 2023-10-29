@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import appSlice from 'state/slices/appSlice';
+import gameSlice from 'state/slices/gameSlice';
 import playerSlice from 'state/slices/playerSlice';
 
 // The root reducer for the store.
 const rootReducer = {
-    app: appSlice.reducer,
+    game: gameSlice.reducer,
     player: playerSlice.reducer
 };
 

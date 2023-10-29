@@ -3,6 +3,7 @@ import TimePanel from '../TimePanel/TimePanel';
 import PlayerTitle from '../PlayerTitle/PlayerTitle';
 import './GameScreen.scss';
 import { Player } from 'utils/types';
+import StartPanel from '../StartPanel/StartPanel';
 
 
 /**
@@ -15,18 +16,19 @@ const GameScreen = () => {
     return (
         <section className='rk-game-screen'>
             <div className='container'>
-                <div className='row'>
+                <div className='row mb-4'>
                     <div className='col-12 col-lg-6 order-lg-1'>
                         <BoardPanel />
                     </div>
                     <div className='col-6 col-lg-3 order-lg-0'>
-                        <PlayerTitle title={'player O'} player={Player.O} colorClass='rk-color-1' />
+                        <PlayerTitle player={Player.O} />
                     </div>
 
                     <div className='col-6  col-lg-3 order-lg-2'>
-                        <PlayerTitle title={'player X'} player={Player.X} colorClass='rk-color-1' />
+                        <PlayerTitle player={Player.X} />
                     </div>
                 </div>
+                <StartPanel />
                 <TimePanel />
             </div>
         </section>

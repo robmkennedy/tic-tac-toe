@@ -1,13 +1,15 @@
 
-import { Player } from 'utils/types';
-import './GameBoard.scss';
-import GameSquare from '../GameSquare/GameSquare';
-import { useBoardStatusSelector, useBoardTypeSelector, useCurrentPlayerSelector } from 'hooks/selectorHooks';
+import { useCheckWinner, useOverallWinner } from 'hooks/gameHooks';
+import { useBoardStatusSelector, useBoardTypeSelector, useCurrentPlayerSelector, useIsRunningSelector, useWinHistorySelector } from 'hooks/selectorHooks';
 import { useAppDispatch } from 'hooks/stateHooks';
-import { boardStatusChanged } from 'state/slices/appSlice';
+import { gameWon, boardStatusChanged } from 'state/slices/gameSlice';
 import { currentPlayerChanged } from 'state/slices/playerSlice';
+import { Player } from 'utils/types';
 import { isWinner } from 'utils/validation';
-import { useCheckWinner } from 'hooks/gameHooks';
+import GameSquare from '../GameSquare/GameSquare';
+import './GameBoard.scss';
+import { useTranslation } from 'react-i18next';
+
 
 
 /**
@@ -17,30 +19,39 @@ import { useCheckWinner } from 'hooks/gameHooks';
  */
 const GameBoard = () => {
 
+
     const dispatch = useAppDispatch();
     const boardType = useBoardTypeSelector();
     const boardStatus = useBoardStatusSelector(boardType);
+    const isRunning = useIsRunningSelector();
     const currentPlayer = useCurrentPlayerSelector();
-    const winner = useCheckWinner();
-
-
+    const win = useCheckWinner();
 
     const handleSquareClick = (squareIndex: number) => {
         const existingSquareStatus = boardStatus[squareIndex];
-        if (existingSquareStatus) {
+        if (existingSquareStatus || !isRunning) {
             return;
         }
+
+        const newBoardStatus = [...boardStatus];
+        newBoardStatus[squareIndex] = currentPlayer;
+        const win = isWinner(boardType, newBoardStatus);
+        if (win) {
+            dispatch(gameWon(win));
+        }
+
         const nextPlayer = (currentPlayer === Player.O ? Player.X : Player.O);
-        dispatch(boardStatusChanged({ boardType, squareIndex, currentPlayer }));
+        dispatch(boardStatusChanged(newBoardStatus));
         dispatch(currentPlayerChanged(nextPlayer));
     };
 
     let squares = boardStatus.map((status, index) => {
-        return <GameSquare player={status} onClick={() => handleSquareClick(index)} />;
+        let highlight = win && win.winSquares.includes(index) ? true : false;
+        return <GameSquare player={status} highlight={highlight} onClick={() => handleSquareClick(index)} />;
     });
 
     return (
-        <section className='rk-game-board'>
+        <section className={`rk-game-board board-${boardType}`}>
             {squares}
         </section>
     );
