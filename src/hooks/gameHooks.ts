@@ -1,11 +1,7 @@
-import { useAppSelector } from 'hooks/stateHooks';
-import { Board, Player, Win } from 'utils/types';
-import { useBoardStatusSelector, useBoardTypeSelector, useWinHistorySelector } from './selectorHooks';
+import { Player, Win } from 'utils/types';
 import { isWinner } from 'utils/validation';
+import { useBoardStatusSelector, useBoardTypeSelector, useWinHistorySelector } from './selectorHooks';
 
-/** 
- * Select the selected item from the app state slice
- */
 export const useCheckWinner = (): Win | undefined => {
 
     const boardType = useBoardTypeSelector();

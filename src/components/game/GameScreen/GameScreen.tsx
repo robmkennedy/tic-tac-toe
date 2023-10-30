@@ -1,16 +1,10 @@
-import BoardPanel from '../BoardPanel/BoardPanel';
-import TimePanel from '../TimePanel/TimePanel';
-import PlayerTitle from '../PlayerTitle/PlayerTitle';
-import './GameScreen.scss';
 import { Player } from 'utils/types';
+import BoardPanel from '../BoardPanel/BoardPanel';
+import PlayerTitle from '../PlayerTitle/PlayerTitle';
 import StartPanel from '../StartPanel/StartPanel';
+import TimePanel from '../TimePanel/TimePanel';
+import './GameScreen.scss';
 
-
-/**
- * A component used to show the list of people. It uses the common NavList component
- * and provides name, sorting, and filtering functions. It will listen to state changes
- * for the search string and filter the people accordingly.
- */
 const GameScreen = () => {
 
     return (

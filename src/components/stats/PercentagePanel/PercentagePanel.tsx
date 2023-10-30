@@ -1,13 +1,8 @@
 import { useWinHistorySelector } from 'hooks/selectorHooks';
 import { useTranslation } from 'react-i18next';
-import './PercentagePanel.scss';
 import { Player } from 'utils/types';
+import './PercentagePanel.scss';
 
-/**
- * This is the main area of the application displayed beneath the header.
- * When the app loads for the first time, a query request is made to fetch the Person data.
- * As this is an async call, we must accommodate the loading and error states.  
- */
 const PercentagePanel = () => {
     const { t } = useTranslation();
     const winHistory = useWinHistorySelector();

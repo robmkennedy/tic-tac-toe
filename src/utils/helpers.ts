@@ -1,8 +1,5 @@
 import { Player } from "./types";
 
-/**
- * A type to represent the strings used for player 1 and player 2
- */
 export const formatTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600);
     const hourString = hours < 10 ? `0${hours}` : hours;
@@ -17,5 +14,5 @@ export const formatTime = (seconds: number) => {
 
 
 export const getPlayerClass = (player: Player) => {
-    return (player === Player.O ? 'player-o' : player == Player.X ? 'player-x' : '');
+    return (player === Player.O ? 'player-o' : player === Player.X ? 'player-x' : '');
 }

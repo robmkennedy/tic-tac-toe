@@ -17,11 +17,6 @@ const initialGameState: GameState = {
     boardStatus: emptyBoards
 };
 
-/**
- * This portion of the state is used to control the layout of the app. For a simple
- * app such as this, the only requirement is to keep track of what person is selected
- * and the search string
- * */
 const gameSlice = createSlice({
     name: 'game',
     initialState: initialGameState,

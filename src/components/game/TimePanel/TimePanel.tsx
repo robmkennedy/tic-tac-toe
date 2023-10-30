@@ -1,10 +1,7 @@
-import { useBoardTypeSelector, useBoardStatusSelector, useIsRunningSelector, useTotalTimeSelector, useCurrentTimeSelector } from 'hooks/selectorHooks';
-import { useAppDispatch } from 'hooks/stateHooks';
-import './TimePanel.scss';
-import { boardTypeChanged, gameStarted } from 'state/slices/gameSlice';
-import { Board } from 'utils/types';
+import { useCurrentTimeSelector } from 'hooks/selectorHooks';
 import { useTranslation } from 'react-i18next';
 import { formatTime } from 'utils/helpers';
+import './TimePanel.scss';
 
 /**
  * The top-level app component. It consists of two sections - the header at the top 

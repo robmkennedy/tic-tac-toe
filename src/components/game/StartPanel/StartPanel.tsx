@@ -1,18 +1,13 @@
-import { useBoardTypeSelector, useBoardStatusSelector, useIsRunningSelector } from 'hooks/selectorHooks';
+import { useIsRunningSelector } from 'hooks/selectorHooks';
 import { useTranslation } from 'react-i18next';
 
+import { useOverallWinner } from 'hooks/gameHooks';
 import { useAppDispatch } from 'hooks/stateHooks';
-import './StartPanel.scss';
+import { Fragment, useEffect } from 'react';
 import { boardTypeChanged, gameStarted, gameTimeIncremented, matchReset } from 'state/slices/gameSlice';
 import { Board } from 'utils/types';
-import { Fragment, useEffect } from 'react';
-import { useOverallWinner } from 'hooks/gameHooks';
+import './StartPanel.scss';
 
-/**
- * The top-level app component. It consists of two sections - the header at the top 
- * and the main panel taking up the rest of the body.
- * It is wrapped in a Provider used by react-redux for state handling.
- */
 const StartPanel = () => {
     const { t } = useTranslation();
 
@@ -31,7 +26,7 @@ const StartPanel = () => {
 
 
         return () => clearInterval(timer);
-    }, [isRunning]);
+    }, [isRunning, dispatch]);
 
     const handleClick = (boardType: Board) => {
         dispatch(boardTypeChanged(boardType));

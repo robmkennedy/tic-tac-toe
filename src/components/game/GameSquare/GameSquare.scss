@@ -13,9 +13,10 @@
 
     .rk-game-square-content {
         position: relative;
+        display: flex;
+        justify-content: center;
         width: 100%;
         height: 100%;
-
         background-color: rgb(231, 231, 231);
 
         &.rk-highlight {
@@ -23,30 +24,16 @@
         }
 
         &.player-o {
-            &::after {
-                content: "\20dd";
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 50px;
-                color: colors.$rk-player-o; 
-            }
+            background-image: url('./../../../../public/circle.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 60%;
         }
         &.player-x {
-            &::after {
-                content: "\2a2f";
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 50px;
-                color: colors.$rk-player-x; 
-            }
+            background-image: url('./../../../../public/times.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 60%;
         }
     }
 }

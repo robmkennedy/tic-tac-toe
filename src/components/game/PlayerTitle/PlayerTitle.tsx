@@ -1,20 +1,15 @@
 import { useCurrentPlayerSelector, useCurrentWinSelector, useIsRunningSelector } from 'hooks/selectorHooks';
-import './PlayerTitle.scss';
 import { Player } from 'utils/types';
 import { useTranslation } from 'react-i18next';
 import { getPlayerClass } from 'utils/helpers';
 import { useOverallWinner } from 'hooks/gameHooks';
+import './PlayerTitle.scss';
 
 
 type PlayerTitleProps = {
     player: Player
 }
 
-/**
- * The top-level app component. It consists of two sections - the header at the top 
- * and the main panel taking up the rest of the body.
- * It is wrapped in a Provider used by react-redux for state handling.
- */
 const PlayerTitle = ({ player }: PlayerTitleProps) => {
     const { t } = useTranslation();
     const isRunning = useIsRunningSelector();

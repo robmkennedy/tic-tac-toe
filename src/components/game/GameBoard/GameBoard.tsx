@@ -1,25 +1,14 @@
-
-import { useCheckWinner, useOverallWinner } from 'hooks/gameHooks';
-import { useBoardStatusSelector, useBoardTypeSelector, useCurrentPlayerSelector, useIsRunningSelector, useWinHistorySelector } from 'hooks/selectorHooks';
+import { useCheckWinner } from 'hooks/gameHooks';
+import { useBoardStatusSelector, useBoardTypeSelector, useCurrentPlayerSelector, useIsRunningSelector } from 'hooks/selectorHooks';
 import { useAppDispatch } from 'hooks/stateHooks';
-import { gameWon, boardStatusChanged } from 'state/slices/gameSlice';
+import { boardStatusChanged, gameWon } from 'state/slices/gameSlice';
 import { currentPlayerChanged } from 'state/slices/playerSlice';
 import { Player } from 'utils/types';
 import { isWinner } from 'utils/validation';
 import GameSquare from '../GameSquare/GameSquare';
 import './GameBoard.scss';
-import { useTranslation } from 'react-i18next';
 
-
-
-/**
- * A component used to show the list of people. It uses the common NavList component
- * and provides name, sorting, and filtering functions. It will listen to state changes
- * for the search string and filter the people accordingly.
- */
 const GameBoard = () => {
-
-
     const dispatch = useAppDispatch();
     const boardType = useBoardTypeSelector();
     const boardStatus = useBoardStatusSelector(boardType);
@@ -47,7 +36,7 @@ const GameBoard = () => {
 
     let squares = boardStatus.map((status, index) => {
         let highlight = win && win.winSquares.includes(index) ? true : false;
-        return <GameSquare player={status} highlight={highlight} onClick={() => handleSquareClick(index)} />;
+        return <GameSquare player={status} highlight={highlight} onClick={() => handleSquareClick(index)} key={index}/>;
     });
 
     return (
